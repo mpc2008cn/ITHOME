@@ -5,6 +5,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -22,11 +23,12 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private final int COUNT = 8;//标签数量
+    private Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         //信封小图标
@@ -105,15 +107,30 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         switch (item.getItemId()) {
             case R.id.nav_info:
+                switchToInfo();
+                break;
             case R.id.nav_circle:
+                switchToCircle();
+                break;
             case R.id.nav_account:
+                switchToAccount();
+                break;
             case R.id.nav_settings:
+                switchToSettings();
+                break;
             case R.id.nav_about:
+                switchToAbout();
+                break;
             }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void switchToInfo() {
+        getSupportFragmentManager().beginTransaction().replace(R.id.appbar, Fragment);
+        toolbar.setTitle(R.string.navigation_about);
     }
 
     private  class MyViewPagerAdapter extends PagerAdapter {
