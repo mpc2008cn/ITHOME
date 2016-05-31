@@ -5,7 +5,6 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -101,37 +100,7 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        switch (item.getItemId()) {
-            case R.id.nav_info:
-                switchToInfo();
-                break;
-            case R.id.nav_circle:
-                switchToCircle();
-                break;
-            case R.id.nav_account:
-                switchToAccount();
-                break;
-            case R.id.nav_settings:
-                switchToSettings();
-                break;
-            case R.id.nav_about:
-                switchToAbout();
-                break;
-            }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
-    }
-
-    private void switchToInfo() {
-        getSupportFragmentManager().beginTransaction().replace(R.id.appbar, Fragment);
-        toolbar.setTitle(R.string.navigation_about);
-    }
 
     private  class MyViewPagerAdapter extends PagerAdapter {
         private AppCompatActivity activity;
@@ -190,4 +159,52 @@ public class MainActivity extends AppCompatActivity
             return COUNT;
         }
     }
+
+    @SuppressWarnings("StatementWithEmptyBody")
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        // Handle navigation view item clicks here.
+        switch (item.getItemId()) {
+            case R.id.nav_info:
+
+            case R.id.nav_circle:
+                switchToCircle();
+                break;
+            case R.id.nav_account:
+                switchToAccount();
+                break;
+            case R.id.nav_settings:
+                switchToSettings();
+                break;
+            case R.id.nav_about:
+                switchToAbout();
+                break;
+        }
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+    private void switchToAbout() {
+        getSupportFragmentManager().beginTransaction().replace(R.id.appbar, new AboutFragment()).commit();
+        toolbar.setTitle(R.string.About);
+    }
+
+    private void switchToSettings() {
+        getSupportFragmentManager().beginTransaction().replace(R.id.appbar, new SettingsFragment()).commit();
+        toolbar.setTitle(R.string.Settings);
+    }
+
+    private void switchToAccount() {
+        getSupportFragmentManager().beginTransaction().replace(R.id.appbar, new AccountFragment()).commit();
+        toolbar.setTitle(R.string.Account);
+    }
+
+    private void switchToCircle() {
+        getSupportFragmentManager().beginTransaction().replace(R.id.appbar, new CircleFragment()).commit();
+        toolbar.setTitle(R.string.Circle);
+    }
+
+
 }

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">IT之家</string>
+    <string name="app_name">IT之家 – 资讯</string>
     <string name="search_title">搜索</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -7,5 +7,8 @@
     <string name="action_settings">设置</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Circle">IT之家 – IT 圈</string>
+    <string name="Settings">设置</string>
+    <string name="Account">账户</string>
+    <string name="About">关于</string>
 </resources>
